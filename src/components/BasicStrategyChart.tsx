@@ -42,6 +42,7 @@ const BasicStrategy: React.FC<BasicStrategyChartProps> = ({data, type}) => {
     return (
         <TableContainer className="mt-2">
             <Table size="small" sx={{
+                minWidth: '550px',
                 [`& .${tableCellClasses.root}`]: {
                     width: "5%",
                     border: "solid black 2px",

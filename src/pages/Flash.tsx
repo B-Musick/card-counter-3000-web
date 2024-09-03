@@ -3,7 +3,7 @@ import BasicStrategyToggleCharts from "../components/BasicStrategyToggleCharts";
 
 function Flash() {
     return (
-        <BasicStrategyToggleCharts />
+        <div>Flash</div>
     )
 }
 

@@ -12,3 +12,9 @@ export interface Card {
     count: number,
     imageUrl: string
 }
+
+export interface BasicStrategyFlashCard {
+    player: Array<string>,
+    dealer: string,
+    play: GameAction,
+}

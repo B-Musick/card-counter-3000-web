@@ -5,10 +5,11 @@ import { tableCellClasses } from "@mui/material/TableCell";
 
 interface BasicStrategyChartProps {
     data: Array<BasicStrategyChartCell>,
-    type: string
+    type: string,
+    chartTitle?: string
 }
 
-const BasicStrategy: React.FC<BasicStrategyChartProps> = ({data, type}) => {
+const BasicStrategy: React.FC<BasicStrategyChartProps> = ({data, type, chartTitle}) => {
     const dealerFaceCards = [2,3,4,5,6,7,8,9,10,11]
 
     const cellColor = {
@@ -41,15 +42,19 @@ const BasicStrategy: React.FC<BasicStrategyChartProps> = ({data, type}) => {
 
     return (
         <TableContainer className="mt-2">
-            <Table size="small" sx={{
-                minWidth: '550px',
-                [`& .${tableCellClasses.root}`]: {
-                    width: "5%",
-                    border: "solid black 2px",
-                    textAlign: "center",
-                    padding: "2px"
-                }
-            }}>
+            <h3 className="w-full bg-gray-600 text-center text-white border-4 border-b-2 border-black font-bold">{chartTitle}</h3>
+            <Table 
+                size="small" 
+                sx={{
+                    minWidth: '550px',
+                    [`& .${tableCellClasses.root}`]: {
+                        width: "5%",
+                        border: "solid black 2px",
+                        textAlign: "center",
+                        padding: "2px"
+                    }
+                }}
+            >
                 <TableHead>
                     <TableRow className="bg-gray-300">
                         <TableCell></TableCell>

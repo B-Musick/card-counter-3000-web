@@ -35,9 +35,9 @@ const BasicStrategyToggleCharts = () =>{
                 {printButton}
             </div>
             <div ref={printTable}>
-                <BasicStrategyChart type={chartType} data={soft} />
-                <BasicStrategyChart type={chartType} data={hard} />
-                <BasicStrategyChart type={chartType} data={splits} />
+                <BasicStrategyChart chartTitle="Soft" type={chartType} data={soft} />
+                <BasicStrategyChart chartTitle="Hard" type={chartType} data={hard} />
+                <BasicStrategyChart chartTitle="Splits" type={chartType} data={splits} />
             </div>
         </div>
     )

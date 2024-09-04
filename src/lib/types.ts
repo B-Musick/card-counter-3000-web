@@ -1,4 +1,4 @@
-import { GameAction } from "./enums"
+import { BasicStrategyTable, GameAction } from "./enums"
 
 export type BasicStrategyChartCell = {
     action: GameAction,
@@ -17,4 +17,5 @@ export interface BasicStrategyFlashCard {
     player: Array<string>,
     dealer: string,
     play: GameAction,
+    table: BasicStrategyTable
 }

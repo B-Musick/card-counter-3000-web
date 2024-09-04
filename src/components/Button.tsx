@@ -13,7 +13,7 @@ function Button({
     ...events
 }) { // Wrapper
     // Need events.className if we want to add the actual className prop to the component
-    const classes = className(events.className, 'flex justify-center items-center px-2 py-0.5 border', {
+    const classes = className(events.className, 'flex justify-center items-center', {
         'bg-blue-500 text-slate-200': primary,
         'bg-gray-700 text-slate-200': secondary,
         'bg-green-700 text-slate-200': success,

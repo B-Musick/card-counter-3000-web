@@ -6,3 +6,9 @@ export const enum GameAction {
     DontSplit,
     DoubleElseStand
 }
+
+export const enum BasicStrategyTable {
+    Soft,
+    Hard,
+    Splits
+}

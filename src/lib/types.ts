@@ -5,3 +5,10 @@ export type BasicStrategyChartCell = {
     deviation: string,
     stats: number | null
 }
+
+export interface Card {
+    suit: string,
+    rank: string,
+    count: number,
+    imageUrl: string
+}

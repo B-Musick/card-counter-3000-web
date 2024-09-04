@@ -1,5 +1,9 @@
 import { GameAction } from "./enums"
 
+export const suits = ['H', 'C', 'S', 'D'];
+export const ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+export const fullDeckSize = 52;
+
 export const soft = {
     'A,9': [
         { action: GameAction.Stand, deviation: '', stats: null },

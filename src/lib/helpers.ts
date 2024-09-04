@@ -17,6 +17,10 @@ export function convertGameActionToString(action: GameAction) {
     }
 }
 
+export const getEnumValsAsString = (enumType) => {
+    return Object.keys(enumType).filter((v) => isNaN(Number(v)));
+}
+
 export function shuffleArray(list: Array<any>) {
     const listSize = list.length;
 

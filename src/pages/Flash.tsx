@@ -5,6 +5,9 @@ import useCardDeck from "../hooks/useCardDeck";
 import { FaPlayCircle } from "react-icons/fa";
 import { BasicStrategyFlashCard } from "../lib/types";
 import useFlashCardDeck from "../hooks/useFlashCardDeck";
+import ActionButtonDisplay from "../components/ActionButtonDisplay";
+import { getEnumValsAsString } from "../lib/helpers";
+import { GameAction } from "../lib/enums";
 
 function Flash() {
     const [deck] = useCardDeck(1);
@@ -31,16 +34,38 @@ function Flash() {
         <FlashCard details={currentFlashCard} deck={deck} />
     </div>
 
+    const checkAction = (action) => {
+        // if (action === currentFlashCard?.play) {
+        //     setOutcomeIcon('check-square-o');
+        //     updateChart(currentFlashCard, FlashCardSelection.Correct);
+        // } else {
+        //     setOutcomeIcon('minus-square-o')
+        //     updateChart(currentFlashCard, FlashCardSelection.Incorrect);
+        // }
+
+        if (flashCards.length > 0) {
+            setCard();
+        } else {
+            setCurrentFlashCard(undefined)
+        }
+    } 
+
     return (
         <>
-            <div>Flash</div>
+        <div className="flex items-center h-full">
+                {started && currentFlashCard && flashCardSection}
+                {started && <ActionButtonDisplay
+                    buttons={getEnumValsAsString(GameAction)}
+                    handleActionClick={checkAction}
+                    omit={['DontSplit']}
+                    disableButtonsCallback={!started}
+                />}
+        </div>
             {/* {
                 deck.length && 
                     <FlashCard deck={deck} details={{player:['A', 'K'], dealer: 'A', play: GameAction.Hit}} /> } */}
-            {started && currentFlashCard && flashCardSection}
-
             <div>
-                {initialStartButton} 
+                {initialStartButton}
             </div>
         </>
     )

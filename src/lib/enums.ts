@@ -12,3 +12,9 @@ export const enum BasicStrategyTable {
     Hard,
     Splits
 }
+
+export const enum BasicStrategyChartType {
+    Action,
+    Deviation,
+    Stats
+}

@@ -4,11 +4,12 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { useState } from "react";
 import { soft, hard, splits } from "../lib/constants";
 import usePrint from "../hooks/usePrint";
+import { BasicStrategyChartType } from "../lib/enums";
 
 const BasicStrategyToggleCharts = () =>{ 
-    const [chartType, setChartType] = useState('basic')
+    const [chartType, setChartType] = useState(BasicStrategyChartType.Action)
     const [printButton, printTable] = usePrint(
-        chartType == 'basic' ? 'basic_strategy_chart' : 'deviations_chart'
+        chartType == BasicStrategyChartType.Action ? 'basic_strategy_chart' : 'deviations_chart'
     );
 
     const handleChange = (
@@ -29,8 +30,8 @@ const BasicStrategyToggleCharts = () =>{
                     onChange={handleChange}
                     aria-label="Platform"
                 >
-                    <ToggleButton value="basic" className="w-1/2">Basic</ToggleButton>
-                    <ToggleButton value="deviations" className="w-1/2">Deviations</ToggleButton>
+                    <ToggleButton value={BasicStrategyChartType.Action} className="w-1/2">Basic</ToggleButton>
+                    <ToggleButton value={BasicStrategyChartType.Deviation} className="w-1/2">Deviations</ToggleButton>
                 </ToggleButtonGroup>
                 {printButton}
             </div>

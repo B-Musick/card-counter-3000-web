@@ -2,10 +2,11 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from
 import { convertGameActionToString } from "../lib/helpers";
 import { BasicStrategyChartCell } from "../lib/types";
 import { tableCellClasses } from "@mui/material/TableCell";
+import { BasicStrategyChartType } from "../lib/enums";
 
 interface BasicStrategyChartProps {
     data: Array<BasicStrategyChartCell>,
-    type: string,
+    type: BasicStrategyChartType,
     chartTitle?: string
 }
 
@@ -20,7 +21,7 @@ const BasicStrategy: React.FC<BasicStrategyChartProps> = ({data, type, chartTitl
         'Y': 'bg-green-500'
     }
 
-    const isDeviation = (cellData: BasicStrategyChartCell) => type == 'deviations' && cellData.deviation != ''
+    const isDeviation = (cellData: BasicStrategyChartCell) => type == BasicStrategyChartType.Deviation && cellData.deviation != ''
      
 
     const tableBody = Object.keys(data).map((playerHand:string)=>{

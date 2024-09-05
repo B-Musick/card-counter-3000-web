@@ -18,3 +18,8 @@ export const enum BasicStrategyChartType {
     Deviation,
     Stats
 }
+
+export const enum FlashCardSelection {
+    Incorrect,
+    Correct
+}

@@ -6,11 +6,13 @@ import { FaPlayCircle } from "react-icons/fa";
 import { BasicStrategyFlashCard } from "../lib/types";
 import useFlashCardDeck from "../hooks/useFlashCardDeck";
 import ActionButtonDisplay from "../components/ActionButtonDisplay";
-import { getEnumValsAsString } from "../lib/helpers";
-import { GameAction } from "../lib/enums";
+import { clone, convertTableTypeEnumToString, getEnumValsAsString } from "../lib/helpers";
+import { BasicStrategyChartType, BasicStrategyTable, FlashCardSelection, GameAction } from "../lib/enums";
 import { LuCheckSquare } from "react-icons/lu";
 import { FiXSquare, FiSquare } from "react-icons/fi";
 import CollapsableSidePanel from "../components/CollapsableSidePanel";
+import { soft, hard, splits } from "../lib/constants";
+import BasicStrategyChart from "../components/BasicStrategyChart";
 
 function Flash() {
     const [deck] = useCardDeck(1);
@@ -18,6 +20,11 @@ function Flash() {
     const [currentFlashCard, setCurrentFlashCard] = useState<BasicStrategyFlashCard>()
     const [flashCards, resetFlashCards, setFlashCards] = useFlashCardDeck();
     const [outcomeIcon, setOutcomeIcon] = useState(<FiSquare className="w-full h-full" />)
+    const [charts, setCharts] = useState({ "soft": clone(soft), "hard": clone(hard), "splits": clone(splits) });
+    
+    let softTable = <BasicStrategyChart chartTitle="Softs" type={BasicStrategyChartType.Stats} data={charts["soft"]} />
+    let hardTable = <BasicStrategyChart chartTitle="Hards" type={BasicStrategyChartType.Stats} data={charts["hard"]} />
+    let splitTable = <BasicStrategyChart chartTitle="Splits" type={BasicStrategyChartType.Stats} data={charts["splits"]} />
 
     const startPractice = () => {
         setStarted(true);
@@ -41,11 +48,10 @@ function Flash() {
     const checkAction = (action) => {
         if (action === currentFlashCard?.play) {
             setOutcomeIcon(<LuCheckSquare className="w-full h-full" />);
-            // updateChart(currentFlashCard, FlashCardSelection.Correct);
+            updateChart(currentFlashCard, FlashCardSelection.Correct);
         } else {
             setOutcomeIcon(<FiXSquare className="w-full h-full" />);
-
-            // updateChart(currentFlashCard, FlashCardSelection.Incorrect);
+            updateChart(currentFlashCard, FlashCardSelection.Incorrect);
         }
 
         if (flashCards.length > 0) {
@@ -53,6 +59,14 @@ function Flash() {
         } else {
             setCurrentFlashCard(undefined)
         }
+    }
+
+    let updateChart = (currentFlashCard, selectionOutcome) => {
+        let { player, table, dealer } = currentFlashCard;
+        dealer = dealer === 'A' ? 11 : dealer;
+
+        charts[convertTableTypeEnumToString(table)][table == BasicStrategyTable.Hard ? parseInt(player[0]) + parseInt(player[1]) : player][dealer - 2].stats = selectionOutcome;
+        setCharts(charts);
     }
 
     return (
@@ -68,13 +82,11 @@ function Flash() {
                     />}
                 </div>
                 <CollapsableSidePanel toggleButton={outcomeIcon}>
-                    <div>hi this is a test paneld</div>
-                    <div>hi this is a test paneld</div>
+                    {softTable}
+                    {hardTable}
+                    {splitTable}
                 </CollapsableSidePanel>
             </div>
-            {/* {
-                deck.length && 
-                    <FlashCard deck={deck} details={{player:['A', 'K'], dealer: 'A', play: GameAction.Hit}} /> } */}
             <div>
                 {initialStartButton}
             </div>

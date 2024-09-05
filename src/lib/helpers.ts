@@ -1,4 +1,8 @@
-import { GameAction } from "./enums";
+import { BasicStrategyTable, GameAction } from "./enums";
+
+export function clone(toClone: object) {
+    return JSON.parse(JSON.stringify(toClone));
+}
 
 export function convertGameActionToString(action: GameAction) {
     switch (action) {
@@ -14,6 +18,17 @@ export function convertGameActionToString(action: GameAction) {
             return 'N';
         case GameAction.Stand:
             return 'S';
+    }
+}
+
+export const convertTableTypeEnumToString = (tableType: BasicStrategyTable) => {
+    switch (tableType) {
+        case BasicStrategyTable.Hard:
+            return "hard";
+        case BasicStrategyTable.Soft:
+            return "soft";
+        case BasicStrategyTable.Splits:
+            return "splits";
     }
 }
 

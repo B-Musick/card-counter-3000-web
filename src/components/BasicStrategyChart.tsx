@@ -21,8 +21,23 @@ const BasicStrategy: React.FC<BasicStrategyChartProps> = ({data, type, chartTitl
         'Y': 'bg-green-500'
     }
 
+    const statCellColor = {
+        0: 'bg-red-200',
+        1: 'bg-emerald-500'
+    }
+
     const isDeviation = (cellData: BasicStrategyChartCell) => type == BasicStrategyChartType.Deviation && cellData.deviation != ''
-     
+
+    const isStats = (cellData: BasicStrategyChartCell) => type == BasicStrategyChartType.Stats
+    
+    const getCellColor = (cellData, actionString) => {
+        if (isDeviation(cellData)) return 'bg-red-200' 
+        else if(isStats(cellData)){
+            return cellData.stats != null ? statCellColor[cellData.stats] : ''
+        } else {
+            return cellColor[actionString]
+        }
+    }
 
     const tableBody = Object.keys(data).map((playerHand:string)=>{
         return (
@@ -30,9 +45,9 @@ const BasicStrategy: React.FC<BasicStrategyChartProps> = ({data, type, chartTitl
                 <TableCell className="bg-gray-100">{playerHand}</TableCell>
                 {
                     data[playerHand].map((cell:BasicStrategyChartCell)=>{
-                        let actionString = isDeviation(cell) ? cell.deviation : convertGameActionToString(cell.action);
+                        let actionString = isDeviation(cell) ? cell.deviation : (isStats(cell) && cell.stats == null) ? '': convertGameActionToString(cell.action);
 
-                        return <TableCell className={isDeviation(cell) ? 'bg-red-200' : cellColor[actionString]}>
+                        return <TableCell className={getCellColor(cell, actionString)}>
                             { actionString }
                         </TableCell>
                     })

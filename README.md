@@ -48,3 +48,11 @@ export default tseslint.config({
   },
 })
 ```
+
+# Setting up tests
+https://codingwithmanny.medium.com/quick-vitest-setup-with-vitejs-react-typescript-bea9d3a01b07
+
+## Run tests
+```
+npm run test
+```

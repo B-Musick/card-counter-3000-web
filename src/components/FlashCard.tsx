@@ -19,13 +19,13 @@ const FlashCard: React.FC<FlashCardProps> = ({ details, deck }) => {
                     Dealer
                 </div>
                 <div>
-                    <img src={dealerCard.imageUrl}/>
+                    <img data-testid="CardItem" src={dealerCard.imageUrl}/>
                 </div>
             </div>
             <div>
                 <div className="flex">
-                    <img src={playerCardOne.imageUrl} />
-                    <img src={playerCardTwo.imageUrl} />
+                    <img data-testid="CardItem" src={playerCardOne.imageUrl} />
+                    <img data-testid="CardItem" src={playerCardTwo.imageUrl} />
                 </div>
                 <div className="bg-gray-200 rounded-lg text-center text-[0.8em] mt-2">
                     Player

@@ -8,12 +8,15 @@ import useFlashCardDeck from "../hooks/useFlashCardDeck";
 import ActionButtonDisplay from "../components/ActionButtonDisplay";
 import { getEnumValsAsString } from "../lib/helpers";
 import { GameAction } from "../lib/enums";
+import { LuCheckSquare } from "react-icons/lu";
+import { FiXSquare, FiSquare } from "react-icons/fi";
 
 function Flash() {
     const [deck] = useCardDeck(1);
     const [started, setStarted] = useState(false);
     const [currentFlashCard, setCurrentFlashCard] = useState<BasicStrategyFlashCard>()
     const [flashCards, resetFlashCards, setFlashCards] = useFlashCardDeck();
+    const [outcomeIcon, setOutcomeIcon] = useState(<FiSquare className="w-full h-full" />)
 
     const startPractice = () => {
         setStarted(true);
@@ -35,24 +38,26 @@ function Flash() {
     </div>
 
     const checkAction = (action) => {
-        // if (action === currentFlashCard?.play) {
-        //     setOutcomeIcon('check-square-o');
-        //     updateChart(currentFlashCard, FlashCardSelection.Correct);
-        // } else {
-        //     setOutcomeIcon('minus-square-o')
-        //     updateChart(currentFlashCard, FlashCardSelection.Incorrect);
-        // }
+        if (action === currentFlashCard?.play) {
+            setOutcomeIcon(<LuCheckSquare className="w-full h-full" />);
+            // updateChart(currentFlashCard, FlashCardSelection.Correct);
+        } else {
+            setOutcomeIcon(<FiXSquare className="w-full h-full" />);
+
+            // updateChart(currentFlashCard, FlashCardSelection.Incorrect);
+        }
 
         if (flashCards.length > 0) {
             setCard();
         } else {
             setCurrentFlashCard(undefined)
         }
-    } 
+    }
 
     return (
         <>
         <div className="flex items-center h-full">
+                <Button className="w-20 h-20 fixed right-0 top-20">{outcomeIcon}</Button>
                 {started && currentFlashCard && flashCardSection}
                 {started && <ActionButtonDisplay
                     buttons={getEnumValsAsString(GameAction)}

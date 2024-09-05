@@ -10,6 +10,7 @@ import { getEnumValsAsString } from "../lib/helpers";
 import { GameAction } from "../lib/enums";
 import { LuCheckSquare } from "react-icons/lu";
 import { FiXSquare, FiSquare } from "react-icons/fi";
+import CollapsableSidePanel from "../components/CollapsableSidePanel";
 
 function Flash() {
     const [deck] = useCardDeck(1);
@@ -56,16 +57,21 @@ function Flash() {
 
     return (
         <>
-        <div className="flex items-center h-full">
-                <Button className="w-20 h-20 fixed right-0 top-20">{outcomeIcon}</Button>
-                {started && currentFlashCard && flashCardSection}
-                {started && <ActionButtonDisplay
-                    buttons={getEnumValsAsString(GameAction)}
-                    handleActionClick={checkAction}
-                    omit={['DontSplit']}
-                    disableButtonsCallback={!started}
-                />}
-        </div>
+            <div className="flex h-full w-full">
+                <div className="flex h-full w-full">
+                    {started && currentFlashCard && flashCardSection}
+                    {started && <ActionButtonDisplay
+                        buttons={getEnumValsAsString(GameAction)}
+                        handleActionClick={checkAction}
+                        omit={['DontSplit']}
+                        disableButtonsCallback={!started}
+                    />}
+                </div>
+                <CollapsableSidePanel toggleButton={outcomeIcon}>
+                    <div>hi this is a test paneld</div>
+                    <div>hi this is a test paneld</div>
+                </CollapsableSidePanel>
+            </div>
             {/* {
                 deck.length && 
                     <FlashCard deck={deck} details={{player:['A', 'K'], dealer: 'A', play: GameAction.Hit}} /> } */}

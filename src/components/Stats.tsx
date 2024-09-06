@@ -3,9 +3,10 @@ import { useState } from "react";
 import { StatisticsView } from "../lib/enums";
 import StatsTable from "./StatsTable";
 
-function Stats({data, columns}){
+function Stats({data, columns, modalComponent}){
     const [viewShown, setViewShown] = useState<StatisticsView>(StatisticsView.Table);
     const [modalOpen, setModalOpen] = useState<boolean>(false);
+    const [modalElements, setModalElements] = useState()
 
     const handleChange = (
         event: React.MouseEvent<HTMLElement>,
@@ -15,9 +16,7 @@ function Stats({data, columns}){
     };
     
     let showTable = (row) => {
-        // setSoftTable(useChart(clone(row.results.softs), false, 'stats')[0])
-        // setHardTable(useChart(clone(row.results.hards), true, 'stats')[0])
-        // setSplitTable(useChart(clone(row.results.splits), false, 'stats')[0])
+        setModalElements(modalComponent(row))
         setModalOpen(true);
     }
     
@@ -56,7 +55,9 @@ function Stats({data, columns}){
                 aria-describedby="modal-modal-description"
             >
                 <Box className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]" >
-                    <div className="bg-white rounded-xl">hi modal</div>
+                    <div className="w-full h-full bg-white rounded-xl p-4">
+                        {modalElements}
+                    </div>
                 </Box>
             </Modal>
         </>

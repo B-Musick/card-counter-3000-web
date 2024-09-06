@@ -4,7 +4,7 @@ import { StatisticsView } from "../lib/enums";
 import StatsTable from "./StatsTable";
 
 function Stats({data, columns}){
-    const [viewShown, setViewShown] = useState<string>("stats");
+    const [viewShown, setViewShown] = useState<StatisticsView>(StatisticsView.Table);
 
     const handleChange = (
         event: React.MouseEvent<HTMLElement>,

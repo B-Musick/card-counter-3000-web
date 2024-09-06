@@ -9,6 +9,7 @@ describe('CollapsableSidePanel', () => {
     afterEach(() => {
         cleanup();
     });
+    
     it('should render side panel when initially called', ()=>{
         render(<CollapsableSidePanel toggleButton={<CiCircleCheck />}><div>Testing Side Panel</div></CollapsableSidePanel>)
 

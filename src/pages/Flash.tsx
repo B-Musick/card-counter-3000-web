@@ -36,13 +36,12 @@ function Flash() {
         setCurrentFlashCard(flashCard);
     }
 
-    const initialStartButton = !started &&
-        <Button className="flex animate-pulse bg-emerald-200 rounded-full w-20 h-20 p-0 m-0" onClick={startPractice}>
+    const initialStartButton = <Button className="flex animate-pulse bg-emerald-200 rounded-full w-20 h-20 p-0 m-0" onClick={startPractice}>
             <FaPlayCircle className="w-full h-full" />
         </Button>
 
     let flashCardSection = <div className="flex w-full h-3/4">
-        <FlashCard details={currentFlashCard} deck={deck} />
+        {currentFlashCard && <FlashCard details={currentFlashCard} deck={deck} />}
     </div>
 
     const checkAction = (action) => {
@@ -70,27 +69,27 @@ function Flash() {
     }
 
     return (
-        <>
-            <div className="flex h-full w-full">
-                <div className="flex h-full w-full">
-                    {started && currentFlashCard && flashCardSection}
-                    {started && <ActionButtonDisplay
+        <div className="h-full bg-emerald-100">
+            {started && <div className="flex h-full w-full">
+                <div className="flex items-center h-full w-full">
+                    {flashCardSection}
+                    <ActionButtonDisplay
                         buttons={getEnumValsAsString(GameAction)}
                         handleActionClick={checkAction}
                         omit={['DontSplit']}
                         disableButtonsCallback={!started}
-                    />}
+                    />
                 </div>
                 <CollapsableSidePanel toggleButton={outcomeIcon}>
                     {softTable}
                     {hardTable}
                     {splitTable}
                 </CollapsableSidePanel>
-            </div>
-            <div>
+            </div>}
+            {! started && <div className="w-full h-full flex justify-center items-center">
                 {initialStartButton}
-            </div>
-        </>
+            </div>}
+        </div>
     )
 }
 

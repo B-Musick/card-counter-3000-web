@@ -23,3 +23,8 @@ export const enum FlashCardSelection {
     Incorrect,
     Correct
 }
+
+export const enum StatisticsView {
+    Table,
+    Chart
+}

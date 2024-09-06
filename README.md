@@ -56,3 +56,10 @@ https://codingwithmanny.medium.com/quick-vitest-setup-with-vitejs-react-typescri
 ```
 npm run test
 ```
+
+# Material UI
+
+# React Testing Libraries
+
+# JSON Server
+https://www.freecodecamp.org/news/json-server-for-frontend-development/

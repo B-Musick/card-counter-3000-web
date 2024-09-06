@@ -12,7 +12,7 @@ function Stats({data, columns, modalComponent}){
         event: React.MouseEvent<HTMLElement>,
         view: StatisticsView,
     ) => {
-        setViewShown(view);
+        if(view != null) setViewShown(view);
     };
     
     let showTable = (row) => {

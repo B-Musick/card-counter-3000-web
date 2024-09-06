@@ -3,7 +3,7 @@ import { useState } from "react";
 import { StatisticsView } from "../lib/enums";
 import StatsTable from "./StatsTable";
 
-function Stats({data, columns, modalComponent}){
+function Stats({chartComponent, data, columns, modalComponent}){
     const [viewShown, setViewShown] = useState<StatisticsView>(StatisticsView.Table);
     const [modalOpen, setModalOpen] = useState<boolean>(false);
     const [modalElements, setModalElements] = useState()
@@ -30,8 +30,8 @@ function Stats({data, columns, modalComponent}){
             rows={rows}
             hiddenCols={['results', 'total', 'id', 'updated_at']}
             sortable={['created_at', 'percent']} 
-            onRowClick={(row)=>showTable(row)} rowConditionals={undefined}        />
-    
+            onRowClick={(row)=>showTable(row)} rowConditionals={undefined} />
+
     return (
         <>
             <ToggleButtonGroup
@@ -47,7 +47,8 @@ function Stats({data, columns, modalComponent}){
             </ToggleButtonGroup>
 
             {statsTable}
-
+            {viewShown == StatisticsView.Chart && chartComponent(data)}
+            
             <Modal
                 open={modalOpen}
                 onClose={()=>setModalOpen(false)}

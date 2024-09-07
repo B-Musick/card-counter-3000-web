@@ -1,5 +1,4 @@
 import Stats from "../components/Stats";
-import {flash} from "../../db.json"
 import BasicStrategyChart from "../components/BasicStrategyChart";
 import { BasicStrategyChartType } from "../lib/enums";
 import Heatmap from "../components/charts/Heatmap";
@@ -9,7 +8,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 function FlashStats() {
     const columns = ['score', 'percent', 'created_at'];
 
-    const [tableData] = useLocalStorage('flashTableData')
+    // const [tableData] = useLocalStorage('flashTableData')
 
     const getHeatmapData = (stats, dataArray, labels) => {
         labels.forEach((label, index) => {
@@ -81,7 +80,12 @@ function FlashStats() {
 
     return (
         <>
-            <Stats data={tableData} columns={columns} chartComponent={heatmap} modalComponent={flashModalComponent} />
+            <Stats 
+                columns={columns} 
+                chartComponent={heatmap} 
+                modalComponent={flashModalComponent} 
+                storageKey={'flashTableData'}
+            />
         </>        
     )
 }

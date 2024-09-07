@@ -27,7 +27,12 @@ function useLocalStorage(itemKey: string) {
         }
     }, [items])
 
-    return [items, saveItem]
+    const clearItems = () => {
+        setItems([])
+        localStorage.removeItem(itemKey)
+    }
+
+    return [items, saveItem, clearItems]
 }
 
 export default useLocalStorage;

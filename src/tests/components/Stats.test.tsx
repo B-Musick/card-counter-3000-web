@@ -18,8 +18,19 @@ describe('Stats', ()=>{
         </div>
     }
 
+    const testChartComponent = () => {
+        return <div>
+            <div>Test Chart</div>
+        </div>
+    }
+
     beforeEach(()=>{
-        render(<Stats data={data} columns={Object.keys(data[0])} modalComponent={testModalComponent} />)
+        render(<Stats 
+            data={data} 
+            columns={Object.keys(data[0])} 
+            modalComponent={testModalComponent} 
+            chartComponent={testChartComponent} 
+        />)
     })
 
     afterEach(() => {
@@ -39,15 +50,15 @@ describe('Stats', ()=>{
         expect(screen.getByRole('table')).toBeInTheDocument()
     })
 
-    it('should render chart when Chart button pressed', async () => {
-        // let tableButton = screen.getByText('Chart');
-        // const user = userEvent.setup();
-        // await user.click(tableButton);
+    it('should render chartComponent prop when Chart button pressed', async () => {
+        let chartButton = screen.getByText('Chart');
+        const user = userEvent.setup();
+        await user.click(chartButton);
 
-        // expect(screen.getByRole('table')).toBeInTheDocument()
+        expect(screen.getByText('Test Chart')).toBeInTheDocument()
     })
 
-    it('should render modalComponent and row data when row pressed', async () => {
+    it('should render modalComponent prop and row data when row pressed', async () => {
         let row = screen.getAllByRole('cell')[0]
         const user = userEvent.setup();
         await user.click(row);

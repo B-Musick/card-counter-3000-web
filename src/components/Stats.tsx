@@ -21,7 +21,7 @@ function Stats({chartComponent, data, columns, modalComponent}){
     }
     
     let rows = data.map((data, index) => {
-        return { ...data, score: `${data.score}/${data.total}`, created_at: new Date(data.created_at).toLocaleDateString(), percent: Number((data.percent).toFixed(2)) }
+        return { ...data, score: `${data.score}/${data.total}`, created_at: new Date(data.created_at).toLocaleDateString(), percent: Number((data.score/data.total).toFixed(2)) }
     })
 
     let statsTable = rows && viewShown == StatisticsView.Table &&

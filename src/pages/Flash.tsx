@@ -13,6 +13,7 @@ import { FiXSquare, FiSquare } from "react-icons/fi";
 import CollapsableSidePanel from "../components/CollapsableSidePanel";
 import { soft, hard, splits } from "../lib/constants";
 import BasicStrategyChart from "../components/BasicStrategyChart";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 function Flash() {
     const [deck] = useCardDeck(1);
@@ -22,6 +23,8 @@ function Flash() {
     const [outcomeIcon, setOutcomeIcon] = useState(<FiSquare className="w-full h-full" />)
     const [charts, setCharts] = useState({ "soft": clone(soft), "hard": clone(hard), "splits": clone(splits) });
     
+    const [flashData, saveFlashData] = useLocalStorage('flashTableData')
+
     let softTable = <BasicStrategyChart chartTitle="Softs" type={BasicStrategyChartType.Stats} data={charts["soft"]} />
     let hardTable = <BasicStrategyChart chartTitle="Hards" type={BasicStrategyChartType.Stats} data={charts["hard"]} />
     let splitTable = <BasicStrategyChart chartTitle="Splits" type={BasicStrategyChartType.Stats} data={charts["splits"]} />
@@ -57,7 +60,38 @@ function Flash() {
             setCard();
         } else {
             setCurrentFlashCard(undefined)
+            saveFlashData({
+                "score": getScore().score,
+                "total": getScore().total,
+                "results": {
+                    "hards": charts.hard,
+                    "softs": charts.soft,
+                    "splits": charts.splits
+                },
+                "created_at": new Date()
+            })
         }
+    }
+
+    let getScore = () => {
+        let outcome = { score: 0, total: 0 }
+
+        getTableScore(charts.hard, outcome)
+        getTableScore(charts.soft, outcome)
+        getTableScore(charts.splits, outcome)
+
+        return outcome;
+    }
+
+    const getTableScore = (table, outcome) => {
+        Object.keys(table).forEach((key) => {
+            table[key].forEach(cell => {
+                outcome.total += 1;
+                outcome.score += cell.stats
+            })
+        })
+
+        return outcome;
     }
 
     let updateChart = (currentFlashCard, selectionOutcome) => {

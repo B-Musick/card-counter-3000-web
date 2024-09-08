@@ -12,8 +12,11 @@ function useLocalStorage(itemKey: string) {
         }
     }, []);
 
-    const saveItem = (item: Object) =>{
-        if(items.length < 10) {
+    const saveItem = (item: Object, overwrite: boolean) =>{
+        if(overwrite) {
+            setItems(item)
+            console.log(item)
+        } else if(items.length < 10) {
             setItems([...items, item])
         } else {
             // Remove first item from array
@@ -22,7 +25,7 @@ function useLocalStorage(itemKey: string) {
     }
     
     useEffect(()=>{
-        if(items.length > 0) {
+        if(items.length > 0 || Object.keys(items).length > 0) {
             localStorage.setItem(itemKey, JSON.stringify(items));
         }
     }, [items])

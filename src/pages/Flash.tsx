@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import FlashCard from "../components/FlashCard";
 import useCardDeck from "../hooks/useCardDeck";
@@ -14,6 +14,7 @@ import CollapsableSidePanel from "../components/CollapsableSidePanel";
 import { soft, hard, splits } from "../lib/constants";
 import BasicStrategyChart from "../components/BasicStrategyChart";
 import useLocalStorage from "../hooks/useLocalStorage";
+import { Box, Modal } from "@mui/material";
 
 function Flash() {
     const [deck] = useCardDeck(1);
@@ -22,8 +23,10 @@ function Flash() {
     const [flashCards, resetFlashCards, setFlashCards] = useFlashCardDeck();
     const [outcomeIcon, setOutcomeIcon] = useState(<FiSquare className="w-full h-full" />)
     const [charts, setCharts] = useState({ "soft": clone(soft), "hard": clone(hard), "splits": clone(splits) });
-    
+    const [showContinueProgressModal, setShowContinueProgressModal] = useState(false)
+
     const [flashData, saveFlashData] = useLocalStorage('flashTableData')
+    const [currentFlashGame, saveCurrentFlashGame, clearCurrentGame] = useLocalStorage('currentFlashGame')
 
     let softTable = <BasicStrategyChart chartTitle="Softs" type={BasicStrategyChartType.Stats} data={charts["soft"]} />
     let hardTable = <BasicStrategyChart chartTitle="Hards" type={BasicStrategyChartType.Stats} data={charts["hard"]} />
@@ -33,6 +36,38 @@ function Flash() {
         setStarted(true);
         setCard();
     }
+
+    useEffect(()=>{
+        if (localStorage.getItem('currentFlashGame')) {
+            setShowContinueProgressModal(true)
+        }
+    }, [])
+
+    const loadProgress = () => {
+        let {flashCards, currentFlashCard, charts} = currentFlashGame;
+        setShowContinueProgressModal(false)
+        setFlashCards(flashCards)
+        setCurrentFlashCard(currentFlashCard)
+        setCharts(charts);
+        setStarted(true);
+    }
+
+    let continueProgressModal = <Modal
+        open={showContinueProgressModal}
+        onClose={() => setShowContinueProgressModal(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+    >
+        <Box className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
+            <div className="flex flex-col w-full h-full bg-white rounded-xl p-4 z">
+                <div className="mb-5">Continue uninished game or start fresh?</div>
+                <div className="w-full h-full flex justify-evenly">
+                    <Button primary rounded className="w-1/3" onClick={loadProgress}>Continue</Button>
+                    <Button success rounded className="w-1/3" onClick={() => {setShowContinueProgressModal(false); clearCurrentGame();}}>New</Button>
+                </div>
+            </div>
+        </Box>
+    </Modal>
 
     const setCard = () => {
         let flashCard = flashCards.shift();
@@ -58,6 +93,7 @@ function Flash() {
 
         if (flashCards.length > 0) {
             setCard();
+            saveProgress();
         } else {
             setCurrentFlashCard(undefined)
             saveFlashData({
@@ -71,6 +107,15 @@ function Flash() {
                 "created_at": new Date()
             })
         }
+    }
+
+    const saveProgress = () => {
+        saveCurrentFlashGame({
+            'flashCards': flashCards,
+            'currentFlashCard': currentFlashCard,
+            'charts': charts
+        }, true)
+   
     }
 
     let getScore = () => {
@@ -104,6 +149,7 @@ function Flash() {
 
     return (
         <div className="h-full bg-emerald-100">
+            {showContinueProgressModal && continueProgressModal}
             {started && <div className="flex h-full w-full">
                 <div className="flex items-center h-full w-full">
                     {flashCardSection}

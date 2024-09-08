@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import FlashCard from "../components/FlashCard";
 import useCardDeck from "../hooks/useCardDeck";
-import { FaPlayCircle } from "react-icons/fa";
+import { FaChartBar, FaInfoCircle, FaPlayCircle } from "react-icons/fa";
 import { BasicStrategyFlashCard } from "../lib/types";
 import useFlashCardDeck from "../hooks/useFlashCardDeck";
 import ActionButtonDisplay from "../components/ActionButtonDisplay";
@@ -15,6 +15,7 @@ import { soft, hard, splits } from "../lib/constants";
 import BasicStrategyChart from "../components/BasicStrategyChart";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { Box, Modal } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
 function Flash() {
     const [deck] = useCardDeck(1);
@@ -148,7 +149,14 @@ function Flash() {
     }
 
     return (
-        <div className="h-full bg-emerald-100">
+        <div className="h-full bg-emerald-100 relative">
+            <div className="absolute">
+                <NavLink to="/flash/stats">
+                    <Button className="rounded-full bg-white p-3 m-2"><FaChartBar /></Button>
+                </NavLink>
+                {/* This will show modal with info on how to use */}
+                <Button className="rounded-full bg-white p-3 m-2"><FaInfoCircle /></Button>
+            </div>
             {showContinueProgressModal && continueProgressModal}
             {started && <div className="flex h-full w-full">
                 <div className="flex items-center h-full w-full">

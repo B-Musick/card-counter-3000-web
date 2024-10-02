@@ -158,8 +158,8 @@ function Flash() {
                 <Button className="rounded-full bg-white p-3 m-2"><FaInfoCircle /></Button>
             </div>
             {showContinueProgressModal && continueProgressModal}
-            {started && <div className="flex h-full w-full">
-                <div className="flex items-center h-full w-full">
+            {started && <div className="flex h-full">
+                <div className="flex items-center h-full">
                     {flashCardSection}
                     <ActionButtonDisplay
                         buttons={getEnumValsAsString(GameAction)}

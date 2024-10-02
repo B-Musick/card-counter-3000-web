@@ -25,7 +25,7 @@ function Stats({chartComponent, data, columns, modalComponent, storageKey}){
     }
     
     const getRows = () => {
-        let rowData = data.length > 0 ? data : tableData
+        let rowData = data && data.length > 0 ? data : tableData
 
         return rowData.map((rowItem, index) => {
             return { ...rowItem, score: `${rowItem.score}/${rowItem.total}`, created_at: new Date(rowItem.created_at).toLocaleDateString(), percent: Number((rowItem.score / rowItem.total).toFixed(2)) }

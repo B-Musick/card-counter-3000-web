@@ -17,7 +17,7 @@ const ActionButtonDisplay: React.FC<IActionButtonDisplayProps> = ({ buttons, omi
                 buttonList.push(
                     <Button
                         key={index}
-                        className="p-2 my-1 w-[100px] rounded"
+                        className="p-2 my-1 rounded bg-[#e6e5e377] w-[100%] text-xs"
                         onClick={() => handleActionClick(index)}
                         disabled={disableButtonsCallback}
                     >{action}</Button>
@@ -29,7 +29,7 @@ const ActionButtonDisplay: React.FC<IActionButtonDisplayProps> = ({ buttons, omi
     }
 
     return (
-        <div className="bg-transparent">
+        <div className="bg-transparent fixed right-0 top-28 flex flex-col items-end">
             {actionButtons()}
         </div>
     )

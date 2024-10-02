@@ -1,4 +1,4 @@
-import { FaPause, FaPlay } from "react-icons/fa";
+import { FaPause, FaPlay, FaEye, FaEyeSlash } from "react-icons/fa";
 import Button from "../components/Button";
 import useCardDeck from "../hooks/useCardDeck";
 import { useState } from "react";
@@ -10,7 +10,8 @@ import { IoIosRefresh } from "react-icons/io";
 function Count() {
     let [shoe, count, currCard, deal, getCard, deck, reset] = useCardDeck(1);
     const [automatedInterval, setAutomatedInterval] = useState();
-    
+    const [viewDeckDetails, setViewDeckDetails] = useState(false);
+
     const startCount = () => {
         !automatedInterval && setAutomatedInterval(setInterval(() => {
             deal()
@@ -30,12 +31,26 @@ function Count() {
 
     return (
         <div className="flex flex-col justify-evenly items-center h-full">
-            <Button
-                success
-                className="p-5 rounded-full"
-                onClick={resetRound}>
-                <IoIosRefresh />
-            </Button>
+            <div className="flex flex-col items-center w-full">
+                <div className="flex flex-row w-full justify-center m-3">
+                    <Button
+                        success
+                        className="p-6 rounded-full"
+                        onClick={resetRound}>
+                        <IoIosRefresh />
+                    </Button>
+                    <Button
+                        success
+                        className="p-6 rounded-full"
+                        onClick={() => setViewDeckDetails(!viewDeckDetails)}>
+                        {viewDeckDetails ? <FaEyeSlash /> : <FaEye />}
+                    </Button>
+                </div>
+                {viewDeckDetails && <div className="w-1/2 bg-emerald text-center">
+                    <div>Count: {count || 0}</div>
+                    <div>Cards Left: {shoe.length}</div>
+                </div>}
+            </div>
             {currCard && <img className="max-w-[150px] w-[80%] md:w[90%] lg:w-[100%]" data-testid="CardItem" src={currCard.imageUrl} />}
             <div className="flex">
                 <Button

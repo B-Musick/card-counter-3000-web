@@ -30,7 +30,7 @@ function Count() {
     }
 
     return (
-        <div className="flex flex-col justify-evenly items-center h-full">
+        <div className="bg-[#01579b] flex flex-col justify-evenly items-center h-full">
             <div className="flex flex-col items-center w-full">
                 <div className="flex flex-row w-full justify-center m-3">
                     <Button

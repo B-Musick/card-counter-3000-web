@@ -10,10 +10,10 @@ function App() {
     <>
       <HashRouter> 
         <nav className="flex justify-evenly w-full border-b">
-          <NavLink to="/" className="bg-red-200 w-full text-center hover:bg-red-300 p-1">Home</NavLink>
-          <NavLink to="/count" className="bg-red-200 w-full text-center hover:bg-red-300 p-1">Count</NavLink>
-          <NavLink to="/flash" className="bg-red-200 w-full text-center hover:bg-red-300 p-1">Flash</NavLink>
-          <NavLink to="/strategy" className="bg-red-200 w-full text-center hover:bg-red-300 p-1">Basic Strategy</NavLink>
+          {/* <NavLink to="/" className="bg-red-200 w-full text-center hover:bg-red-300 p-1">Home</NavLink> */}
+          <NavLink to="/count" className="bg-[#0d3859] text-white w-full text-center hover:brightness-150 p-1">Count</NavLink>
+          <NavLink to="/flash" className="bg-[#0d3859] text-white w-full text-center hover:brightness-150 p-1">Flash</NavLink>
+          <NavLink to="/strategy" className="bg-[#0d3859] text-white w-full text-center hover:brightness-150 p-1">Basic Strategy</NavLink>
         </nav>
         <Routes>
           <Route path="" element={<Home />} />

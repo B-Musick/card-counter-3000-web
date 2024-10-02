@@ -79,14 +79,14 @@ function FlashStats() {
     }
 
     return (
-        <>
+        <div>
             <Stats 
                 columns={columns} 
                 chartComponent={heatmap} 
                 modalComponent={flashModalComponent} 
                 storageKey={'flashTableData'}
             />
-        </>        
+        </div>        
     )
 }
 

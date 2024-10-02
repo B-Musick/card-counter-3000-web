@@ -155,7 +155,7 @@ function Flash() {
     }
 
     return (
-        <div className="h-full bg-emerald-100 relative">
+        <div className="h-full bg-[#01579b] relative">
             <div className="absolute">
                 <NavLink to="/flash/stats">
                     <Button className="rounded-full bg-white p-3 m-2"><FaChartBar /></Button>

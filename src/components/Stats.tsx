@@ -44,9 +44,9 @@ function Stats({chartComponent, data, columns, modalComponent, storageKey}){
 
     return (
         <>
-            <div className="flex justify-between px-10 mt-10">
+            <div className="flex justify-between px-10 mt-10 h-fit">
                 <ToggleButtonGroup
-                    className="justify-start w-1/2"
+                    className="h-fit justify-start w-1/2"
                     color="primary"
                     value={viewShown}
                     exclusive
@@ -57,8 +57,8 @@ function Stats({chartComponent, data, columns, modalComponent, storageKey}){
                     <ToggleButton value={StatisticsView.Chart} className="w-1/2">Chart</ToggleButton>
                 </ToggleButtonGroup>
                 <Tooltip title="Delete All">
-                    <IconButton>
-                        <Button onClick={() => clearTableData(storageKey)} className="text-red-500" rounded><MdDeleteSweep /></Button>
+                    <IconButton className="h-fit">
+                        <Button onClick={() => clearTableData(storageKey)} className="text-red-500 h-fit" rounded><MdDeleteSweep /></Button>
                     </IconButton>
                 </Tooltip>
             </div>

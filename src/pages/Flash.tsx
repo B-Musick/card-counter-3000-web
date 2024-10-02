@@ -43,12 +43,19 @@ function Flash() {
             setShowContinueProgressModal(true)
         }
     }, [])
+    
+    useEffect(()=>{
+        if (currentFlashCard) {
+            saveProgress();
+        }
+    }, [currentFlashCard])
 
     const loadProgress = () => {
         let {flashCards, currentFlashCard, charts} = currentFlashGame;
         setShowContinueProgressModal(false)
         setFlashCards(flashCards)
         setCurrentFlashCard(currentFlashCard)
+        console.log("current", currentFlashCard)
         setCharts(charts);
         setStarted(true);
     }
@@ -94,7 +101,6 @@ function Flash() {
 
         if (flashCards.length > 0) {
             setCard();
-            saveProgress();
         } else {
             setCurrentFlashCard(undefined)
             saveFlashData({

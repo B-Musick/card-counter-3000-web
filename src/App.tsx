@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, NavLink, BrowserRouter, HashRouter } from 'react-router-dom';
 import Home from './pages/Home';
 import Count from './pages/Count';
 import Flash from './pages/Flash';
@@ -8,7 +8,7 @@ import FlashStats from './pages/FlashStats';
 function App() {
   return (
     <>
-      <Router> 
+      <HashRouter> 
         <nav className="flex justify-evenly w-full border-b">
           <NavLink to="/" className="bg-red-200 w-full text-center hover:bg-red-300 p-1">Home</NavLink>
           <NavLink to="/count" className="bg-red-200 w-full text-center hover:bg-red-300 p-1">Count</NavLink>
@@ -22,7 +22,7 @@ function App() {
           <Route path="/flash/stats" element={<FlashStats />} />
           <Route path="strategy" element={<BasicStrategy />} />
         </Routes>
-      </Router>
+      </HashRouter>
     </>
   )
 }

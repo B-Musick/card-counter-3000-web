@@ -65,6 +65,9 @@ npm run test
 https://www.freecodecamp.org/news/json-server-for-frontend-development/
 
 # Publishing to GH pages
+- Use a deploy script
+https://www.youtube.com/watch?v=XhoWXhyuW_I&ab_channel=EK-developer
+
 - Base directory found looking at
 https://github.com/B-Musick/b-musick.github.io/blob/main/vite.config.ts
 
@@ -74,3 +77,6 @@ https://dev.to/rashidshamloo/deploying-vite-react-app-to-github-pages-35hf
 - Other gh-pages
 https://blog.logrocket.com/deploying-react-apps-github-pages/
 https://www.freecodecamp.org/news/deploy-a-react-app-to-github-pages/
+
+- Remember have to make public and make github pages branch
+https://medium.com/@karinamisnik94/deploying-react-vite-with-routing-on-github-pages-68385676b788

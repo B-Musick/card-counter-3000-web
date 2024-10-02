@@ -35,7 +35,7 @@ function useCardDeck(deckAmount:number) {
 
         suits.forEach(suit=>{
           ranks.forEach(rank=>{
-            newDeck.push({suit, rank, count: setCardCountValue(rank), imageUrl: `${import.meta.env.VITE_CARD_IMAGE_URL}${rank}${suit}.svg`} as Card);
+            newDeck.push({suit, rank, count: setCardCountValue(rank), imageUrl: `./cards/${rank}${suit}.svg`} as Card);
           })
         })
 

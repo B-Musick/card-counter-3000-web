@@ -80,3 +80,7 @@ https://www.freecodecamp.org/news/deploy-a-react-app-to-github-pages/
 
 - Remember have to make public and make github pages branch
 https://medium.com/@karinamisnik94/deploying-react-vite-with-routing-on-github-pages-68385676b788
+
+- Form images to work, add PUBLIC
+https://stackoverflow.com/questions/51002481/images-not-loading-when-deploying-to-github-pages
+

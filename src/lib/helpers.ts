@@ -32,6 +32,10 @@ export const convertTableTypeEnumToString = (tableType: BasicStrategyTable) => {
     }
 }
 
+export function convertSecondsToMilliseconds(secondsVal: number) {
+    return secondsVal * 1000
+}
+
 export const getEnumValsAsString = (enumType) => {
     return Object.keys(enumType).filter((v) => isNaN(Number(v)));
 }
@@ -49,3 +53,4 @@ export function shuffleArray(list: Array<any>) {
 
     return list;
 }
+

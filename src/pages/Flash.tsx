@@ -70,7 +70,7 @@ function Flash() {
             <div className="flex flex-col w-full h-full bg-white rounded-xl p-4 z">
                 <div className="mb-5">Continue uninished game or start fresh?</div>
                 <div className="w-full h-full flex justify-evenly">
-                    <Button primary rounded className="w-1/3" onClick={loadProgress}>Continue</Button>
+                    <Button primary rounded className="px-1" onClick={loadProgress}>Continue</Button>
                     <Button success rounded className="w-1/3" onClick={() => {setShowContinueProgressModal(false); clearCurrentGame();}}>New</Button>
                 </div>
             </div>

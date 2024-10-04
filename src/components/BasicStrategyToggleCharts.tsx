@@ -9,7 +9,7 @@ import { BasicStrategyChartType } from "../lib/enums";
 const BasicStrategyToggleCharts = () =>{ 
     const [chartType, setChartType] = useState(BasicStrategyChartType.Action)
     const [printButton, printTable] = usePrint(
-        chartType == BasicStrategyChartType.Action ? 'basic_strategy_chart' : 'deviations_chart'
+        chartType == BasicStrategyChartType.Action ? 'basic_strategy_chart' : 'deviations_chart', 'px-2 mb-2 h-2/3'
     );
 
     const handleChange = (
@@ -23,15 +23,15 @@ const BasicStrategyToggleCharts = () =>{
         <div className="m-10 flex flex-col justify-evenly h-full">
             <div className="flex justify-between">
                 <ToggleButtonGroup
-                    className="justify-start w-1/2"
+                    className="justify-start w-1/2 pb-2 h-3/4"
                     color="primary"
                     value={chartType}
                     exclusive
                     onChange={handleChange}
                     aria-label="Platform"
                 >
-                    <ToggleButton value={BasicStrategyChartType.Action} className="w-1/2">Basic</ToggleButton>
-                    <ToggleButton value={BasicStrategyChartType.Deviation} className="w-1/2">Deviations</ToggleButton>
+                    <ToggleButton value={BasicStrategyChartType.Action}>Basic</ToggleButton>
+                    <ToggleButton value={BasicStrategyChartType.Deviation}>Deviations</ToggleButton>
                 </ToggleButtonGroup>
                 {printButton}
             </div>

@@ -29,7 +29,7 @@ const ActionButtonDisplay: React.FC<IActionButtonDisplayProps> = ({ buttons, omi
     }
 
     return (
-        <div className="bg-transparent fixed right-0 top-28 flex flex-col items-end">
+        <div className="bg-transparent fixed right-0 top-[25%] flex flex-col items-end">
             {actionButtons()}
         </div>
     )

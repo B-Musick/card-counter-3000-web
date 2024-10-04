@@ -86,7 +86,7 @@ function Flash() {
             <FaPlayCircle className="w-full h-full" />
         </Button>
 
-    let flashCardSection = <div className="flex w-full h-3/4">
+    let flashCardSection = <div className="flex w-full h-full p-10">
         {currentFlashCard && <FlashCard details={currentFlashCard} deck={deck} />}
     </div>
 
@@ -165,7 +165,7 @@ function Flash() {
             </div>
             {showContinueProgressModal && continueProgressModal}
             {started && <div className="flex h-full">
-                <div className="flex items-center h-full">
+                <div className="h-full">
                     {flashCardSection}
                     <ActionButtonDisplay
                         buttons={getEnumValsAsString(GameAction)}

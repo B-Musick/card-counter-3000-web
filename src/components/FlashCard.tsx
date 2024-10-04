@@ -14,20 +14,20 @@ const FlashCard: React.FC<FlashCardProps> = ({ details, deck }) => {
 
     return (
         <div className="flex flex-col justify-between h-full w-full">
-            <div className="flex w-full flex-col items-center">
-                <div className="bg-gray-200 rounded-lg text-center text-[0.8em] mb-2">
+            <div className="flex w-full flex-col items-center justify-center">
+                <div className="bg-gray-200 rounded-lg text-center px-10 text-[0.8em] mb-2">
                     Dealer
                 </div>
-                <div>
+                <div className="flex justify-center">
                     <img className="max-w-[150px] w-[80%] md:w[90%] lg:w-[100%]" data-testid="CardItem" src={dealerCard.imageUrl} />
                 </div>
             </div>
             <div className="w-full">
                 <div className="flex w-full justify-center">
-                    <div>
+                    <div className="flex justify-center">
                         <img className="max-w-[150px] w-[80%] md:w[90%] lg:w-[100%]" data-testid="CardItem" src={playerCardOne.imageUrl} />
                     </div>
-                    <div>
+                    <div className="flex justify-center">
                         <img className="max-w-[150px] w-[80%] md:w[90%] lg:w-[100%]" data-testid="CardItem" src={playerCardTwo.imageUrl} />
                     </div>
                 </div>

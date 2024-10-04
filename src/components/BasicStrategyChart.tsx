@@ -7,10 +7,11 @@ import { BasicStrategyChartType } from "../lib/enums";
 interface BasicStrategyChartProps {
     data: Array<BasicStrategyChartCell>,
     type: BasicStrategyChartType,
-    chartTitle?: string
+    chartTitle?: string,
+    reversed?: boolean
 }
 
-const BasicStrategy: React.FC<BasicStrategyChartProps> = ({data, type, chartTitle}) => {
+const BasicStrategy: React.FC<BasicStrategyChartProps> = ({data, type, chartTitle, reversed}) => {
     const dealerFaceCards = [2,3,4,5,6,7,8,9,10,11]
 
     const cellColor = {
@@ -39,7 +40,9 @@ const BasicStrategy: React.FC<BasicStrategyChartProps> = ({data, type, chartTitl
         }
     }
 
-    const tableBody = Object.keys(data).map((playerHand:string)=>{
+    let dataKeys = reversed ? Object.keys(data).reverse() : Object.keys(data);
+
+    const tableBody = dataKeys.map((playerHand:string)=>{
         return (
             <TableRow>
                 <TableCell className="bg-gray-100">{playerHand}</TableCell>

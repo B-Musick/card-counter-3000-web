@@ -37,7 +37,7 @@ const BasicStrategyToggleCharts = () =>{
             </div>
             <div ref={printTable}>
                 <BasicStrategyChart chartTitle="Soft" type={chartType} data={soft} />
-                <BasicStrategyChart chartTitle="Hard" type={chartType} data={hard} />
+                <BasicStrategyChart chartTitle="Hard" reversed={true} type={chartType} data={hard} />
                 <BasicStrategyChart chartTitle="Splits" type={chartType} data={splits} />
             </div>
         </div>

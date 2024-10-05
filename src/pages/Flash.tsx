@@ -165,20 +165,24 @@ function Flash() {
             </div>
             {showContinueProgressModal && continueProgressModal}
             {started && <div className="flex h-full">
-                <div className="h-full">
+
+                <div className="flex h-full w-full">
                     {flashCardSection}
-                    <ActionButtonDisplay
-                        buttons={getEnumValsAsString(GameAction)}
-                        handleActionClick={checkAction}
-                        omit={['DontSplit']}
-                        disableButtonsCallback={!started}
-                    />
+                    <CollapsableSidePanel 
+                        toggleButton={outcomeIcon} 
+                        classes={"bg-white"}
+                        underToggle={<ActionButtonDisplay
+                            buttons={getEnumValsAsString(GameAction)}
+                            handleActionClick={checkAction}
+                            omit={['DontSplit']}
+                            disableButtonsCallback={!started}
+                        />}>
+                        {softTable}
+                        {hardTable}
+                        {splitTable}
+                    </CollapsableSidePanel>
                 </div>
-                <CollapsableSidePanel toggleButton={outcomeIcon}>
-                    {softTable}
-                    {hardTable}
-                    {splitTable}
-                </CollapsableSidePanel>
+
             </div>}
             {! started && <div className="w-full h-full flex justify-center items-center">
                 {initialStartButton}

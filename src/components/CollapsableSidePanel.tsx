@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "./Button";
 import { Box, Modal } from "@mui/material";
 
-const CollapsableSidePanel = ({children, toggleButton, classes}) => {
+const CollapsableSidePanel = ({children, toggleButton, classes, underToggle}) => {
     const [showPanel, setShowPanel] = useState(true);
     const [showModal, setShowModal] = useState(false);
 
@@ -23,13 +23,16 @@ const CollapsableSidePanel = ({children, toggleButton, classes}) => {
 
     return (
         <>
-            <Button onClick={()=>setShowPanel(!showPanel)} className="hidden fixed right-0 lg:flex hover:brightness-125 !w-10 !h-10 shrink-0">
-                {toggleButton}
-            </Button>
-            <Button onClick={() => setShowModal(!showModal)} className="lg:hidden fixed right-0 lg:flex hover:brightness-125 !w-10 !h-10 shrink-0">
-                {toggleButton}
-            </Button>
-            {showPanel && <section className={`hidden lg:block flex flex-col h-full w-1/2 justify-between`}>
+            <div className="h-full flex flex-col items-end">
+                <Button onClick={() => setShowPanel(!showPanel)} className="hidden lg:flex hover:brightness-125 !w-10 !h-10 shrink-0 m-0">
+                    {toggleButton}
+                </Button>
+                <Button onClick={() => setShowModal(!showModal)} className="lg:hidden fixed right-0 lg:flex hover:brightness-125 !w-10 !h-10 shrink-0">
+                    {toggleButton}
+                </Button>
+                {underToggle}
+            </div>
+            {showPanel && <section className={`${classes} hidden lg:flex h-full justify-between flex flex-col w-1/2 justify-end`}>
                 {children}
             </section>}
             {showModal && strategyChartModal}

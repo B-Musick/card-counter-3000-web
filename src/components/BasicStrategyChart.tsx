@@ -60,17 +60,16 @@ const BasicStrategy: React.FC<BasicStrategyChartProps> = ({data, type, chartTitl
     })
 
     return (
-        <TableContainer className="grow-1 min-h-0">
+        <TableContainer className="bg-white flex flex-col">
             <h3 className="w-full bg-gray-600 text-center text-white border-4 text-[1.4vh] border-b-2 border-black font-bold">{chartTitle}</h3>
             <Table
                 sx={{
                     [`& .${tableCellClasses.root}`]: {
                         width: '5%',
-                        height: '1%s',
                         border: "solid black 2px",
                         textAlign: "center",
                         margin: '0px',
-                        fontSize: '1.4vh',
+                        fontSize: '0.7em',
                         padding: "0px",
                     }
                 }}

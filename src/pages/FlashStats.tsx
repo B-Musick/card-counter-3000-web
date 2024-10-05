@@ -63,7 +63,7 @@ function FlashStats() {
         let softScope = getHeatmapScope(data, "softs")
         let splitsScope = getHeatmapScope(data, "splits")
 
-        return <div>
+        return <div className="flex w-full flex-col items-center">
             <Heatmap textData={hardScope?.data.cellText} data={hardScope.data.cellTotals} options={hardScope.options} />
             <Heatmap textData={softScope?.data.cellText} data={softScope.data.cellTotals} options={softScope.options} />
             <Heatmap textData={splitsScope?.data.cellText} data={splitsScope.data.cellTotals} options={splitsScope.options} />

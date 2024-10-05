@@ -44,7 +44,7 @@ function Stats({chartComponent, data, columns, modalComponent, storageKey}){
 
     return (
         <>
-            <div className="flex justify-between px-10 mt-10 h-fit">
+            <div className="flex justify-between px-10 mt-10 h-fit mb-4">
                 <ToggleButtonGroup
                     className="h-fit justify-start w-1/2"
                     color="primary"

@@ -57,7 +57,8 @@ function Count() {
                     "score": getScore(),
                     "total": testCountGuesses.length,
                     "results": testCountGuesses,
-                    "created_at": new Date()
+                    "created_at": new Date(),
+                    "percent": getScore()/testCountGuesses.length * 100.0
                 })
             // Clear guesses
             setCurrentCountGuess(0);
@@ -121,7 +122,7 @@ function Count() {
                 </div>
                 <div className="flex h-1/2 flex-col justify-between items-center">
                     {currCard && <img className="max-w-[150px] w-[80%] md:w[90%] lg:w-[100%]" data-testid="CardItem" src={currCard.imageUrl} />}
-                    
+
                     {viewDeckDetails && <div className="bg-emerald text-center">
                         <div>Count: {count || 0}</div>
                         <div>Cards Left: {shoe.length}</div>

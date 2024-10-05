@@ -4,6 +4,7 @@ import Count from './pages/Count';
 import Flash from './pages/Flash';
 import BasicStrategy from './pages/BasicStrategy';
 import FlashStats from './pages/FlashStats';
+import CountStats from './pages/CountStats';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="" element={<Home />} />
           <Route path="count" element={<Count />} />
+          <Route path="/count/stats" element={<CountStats />} />
           <Route path="/flash" element={<Flash />} />
           <Route path="/flash/stats" element={<FlashStats />} />
           <Route path="strategy" element={<BasicStrategy />} />

@@ -54,7 +54,7 @@ function Stats({chartComponent, data, columns, modalComponent, storageKey}){
                     aria-label="Platform"
                 >
                     <ToggleButton value={StatisticsView.Table} className="w-1/2">Table</ToggleButton>
-                    <ToggleButton value={StatisticsView.Chart} className="w-1/2">Chart</ToggleButton>
+                    <ToggleButton disabled={!chartComponent} value={StatisticsView.Chart} className="w-1/2">Chart</ToggleButton >
                 </ToggleButtonGroup>
                 <Tooltip title="Delete All">
                     <IconButton className="h-fit">

@@ -7,6 +7,7 @@ import { fullDeckSize } from "../lib/constants";
 import { GiCardPlay } from "react-icons/gi";
 import { IoIosRefresh } from "react-icons/io";
 import { Box, Modal } from "@mui/material";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 function Count() {
     let [shoe, count, currCard, deal, getCard, deck, reset] = useCardDeck(1);
@@ -16,6 +17,7 @@ function Count() {
     const [showTestGuessModal, setShowTestGuessModal] = useState(false);
     const [currentCountGuess, setCurrentCountGuess] = useState(0);
     const [testCountGuesses, setTestCountGuesses] = useState([]);
+    const [countData, saveCountData] = useLocalStorage('countData')
 
     const submitGuess = (e) => {
         setTestCountGuesses((prevVal) => [...prevVal, {guess: currentCountGuess, actual: count}]);
@@ -44,8 +46,7 @@ function Count() {
             setShowTestGuessModal(true);
         } else if(test && shoe.length == 0) {
             // Save to local storage
-            console.log(testCountGuesses)
-
+            saveCountData(testCountGuesses)
             // Clear guesses
             setCurrentCountGuess(0);
             setTestCountGuesses([]);

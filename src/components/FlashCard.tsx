@@ -25,7 +25,7 @@ const FlashCard: React.FC<FlashCardProps> = ({ details, deck }) => {
             <div className="w-full">
                 <div className="flex w-full justify-center">
                     <div className="flex justify-center">
-                        <img className="max-w-[150px] w-[80%] md:w[90%] lg:w-[100%]" data-testid="CardItem" src={playerCardOne.imageUrl} />
+                        <img className="max-w-[150px] w-[80%] md:w[90%]" data-testid="CardItem" src={playerCardOne.imageUrl} />
                     </div>
                     <div className="flex justify-center">
                         <img className="max-w-[150px] w-[80%] md:w[90%] lg:w-[100%]" data-testid="CardItem" src={playerCardTwo.imageUrl} />

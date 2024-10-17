@@ -30,7 +30,7 @@ function Flash() {
     const [currentFlashGame, saveCurrentFlashGame, clearCurrentGame] = useLocalStorage('currentFlashGame')
 
     let softTable = <BasicStrategyChart chartTitle="Softs" type={BasicStrategyChartType.Stats} data={charts["soft"]} />
-    let hardTable = <BasicStrategyChart chartTitle="Hards" type={BasicStrategyChartType.Stats} data={charts["hard"]} />
+    let hardTable = <BasicStrategyChart chartTitle="Hards" type={BasicStrategyChartType.Stats} data={charts["hard"]} reversed={true}/>
     let splitTable = <BasicStrategyChart chartTitle="Splits" type={BasicStrategyChartType.Stats} data={charts["splits"]} />
 
     const startPractice = () => {

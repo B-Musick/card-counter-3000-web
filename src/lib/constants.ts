@@ -210,7 +210,7 @@ export const hard = {
         { action: GameAction.Double, deviation: '', stats: null },
         { action: GameAction.Double, deviation: '', stats: null },
         { action: GameAction.Double, deviation: '', stats: null },
-        { action: GameAction.Hit, deviation: '', stats: null },
+        { action: GameAction.Double, deviation: '', stats: null },
         { action: GameAction.Hit, deviation: '4+', stats: null },
         { action: GameAction.Hit, deviation: '3+', stats: null },
     ],

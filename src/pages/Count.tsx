@@ -34,7 +34,7 @@ function Count() {
     >
         <Box className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
             <div className="flex flex-col w-full h-full bg-white rounded-xl p-4 z">
-                <input placeholder="Current Count?" className="text-center" value={currentCountGuess} onChange={(e)=>setCurrentCountGuess(!isNaN(e.target.value) ? parseInt(e.target.value) : undefined)} type="tel" onFocus={e => e.target.select()}/>
+                <input placeholder="Current Count?" className="text-center" value={currentCountGuess} onChange={(e)=>setCurrentCountGuess(!isNaN(e.target.value) ? parseInt(e.target.value) : undefined)} type="text" onFocus={e => e.target.select()}/>
                 <Button secondary rounded className="mt-3" onClick={submitGuess}>Submit</Button>
             </div>
         </Box>
